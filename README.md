@@ -3,6 +3,9 @@ yii-mailer
 
 Yii Component for Swift Mailer
 
+- [Documentation](http://swiftmailer.org/docs/messages.html)
+- [Github Project Page](https://github.com/janisto/yii-mailer/)
+
 Requirements
 ------------------
 
@@ -23,7 +26,7 @@ Installation
 	"require": {
 		"php": ">=5.3.0",
 		"yiisoft/yii": "1.1.14",
-		"janisto/yii-mailer": "1.0.0",
+		"janisto/yii-mailer": "1.0.0"
 	}
 }
 ~~~
@@ -57,6 +60,52 @@ require_once($composerAutoload);
 		),
 		...
 	),
+~~~
+
+Usage
+------------------
+
+~~~
+$message = Yii::app()->mailer
+	->createMessage('Your subject', 'Here is the message itself')
+	->setFrom(array('from@domain.com' => 'From Name'))
+	->setTo(array('to@domain.com' => 'To Name'));
+
+Yii::app()->mailer->send($message);
+~~~
+
+or
+
+~~~
+$failures = array();
+$sent = 0;
+$from = array('from@domain.com' => 'From Name');
+$emails = array(
+	array('to@domain.com' => 'To Name'),
+	array('receiver@bad-domain.org' => 'To Name'),
+	array('other-receiver@bad-domain.org' => 'To Name'),
+);
+
+/* @var Swift_Message $message */
+$message = Yii::app()->mailer
+	->createMessage('Your subject')
+	->setFrom($from)
+	->setBody('Here is the message itself')
+	->addPart('<q>Here is the message itself</q>', 'text/html');
+
+foreach ($emails as $to) {
+	$message->setTo($to);
+	try {
+		$sent += Yii::app()->mailer->send($message, $failures);
+	} catch (Exception $e) {
+		// SMTP server not responding or limit exceeded?
+		echo $e->getMessage();
+	}
+}
+
+echo "$sent emails sent.\n";
+echo "Failures:\n";
+print_r($failures);
 ~~~
 
 Changelog
