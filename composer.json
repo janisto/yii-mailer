@@ -1,0 +1,22 @@
+{
+	"name": "janisto/yii-mailer",
+	"description": "Yii Component for Swift Mailer",
+	"keywords": ["yii", "extension", "swift", "mailer", "mail"],
+	"homepage": "https://github.com/janisto/yii-mailer",
+	"type": "library",
+	"license": "public domain",
+	"authors": [
+		{
+			"name": "Jani Mikkonen",
+			"email": "janisto@php.net"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/janisto/yii-mailer/issues?state=open",
+		"source": "https://github.com/janisto/yii-mailer"
+	},
+	"require": {
+		"php": ">=5.1.0",
+		"swiftmailer/swiftmailer": ">=5.0.0"
+	}
+}
