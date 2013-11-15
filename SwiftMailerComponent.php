@@ -4,7 +4,7 @@
  * Class SwiftMailerComponent
  *
  * @uses CApplicationComponent
- * @version 1.0.0-dev
+ * @version 1.0.0
  * @copyright 2013
  * @author Jani Mikkonen <janisto@php.net>
  * @license public domain
