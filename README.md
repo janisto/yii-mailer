@@ -17,7 +17,7 @@ Installation
 
 - Require the package.
 
-~~~
+```php
 {
 	"name": "app-name",
 	"description": "App description",
@@ -29,20 +29,20 @@ Installation
 		"janisto/yii-mailer": "1.0.0"
 	}
 }
-~~~
+```
 
 - Include Composer autoloader before Yii in your entry script (index.php and/or yiic.php for console scripts).
 
-~~~
+```php
 // Composer autoload
 $composerAutoload = dirname(__FILE__) . '/../vendor/autoload.php';
 require_once($composerAutoload);
 ...
-~~~
+```
 
 - Add vendor path to your configuration file, attach component and set properties.
 
-~~~
+```php
 	'aliases'=>array(
 		'vendor' => realpath(__DIR__ . '/../../vendor'),
 	),
@@ -60,23 +60,23 @@ require_once($composerAutoload);
 		),
 		...
 	),
-~~~
+```
 
 Usage
 ------------------
 
-~~~
+```php
 $message = Yii::app()->mailer
 	->createMessage('Your subject', 'Here is the message itself')
 	->setFrom(array('from@domain.com' => 'From Name'))
 	->setTo(array('to@domain.com' => 'To Name'));
 
 Yii::app()->mailer->send($message);
-~~~
+```
 
 or
 
-~~~
+```php
 $failures = array();
 $sent = 0;
 $from = array('from@domain.com' => 'From Name');
@@ -106,7 +106,7 @@ foreach ($emails as $to) {
 echo "$sent emails sent.\n";
 echo "Failures:\n";
 print_r($failures);
-~~~
+```
 
 Changelog
 ---------
